@@ -1,0 +1,307 @@
+@media not (-moz-bool-pref: 'zen.view.compact') {
+
+  /* Set explicit minimum on overall window sizes */
+  :root {
+    min-width: 800px !important;
+    min-height: 460px !important;
+  }
+  
+  /* Make items belonging to the content/nav area visible when positioned outside */
+  #zen-appcontent-wrapper {
+  overflow: visible;
+  }
+  
+  /* Sidebar - Add Space for URL Bar */
+  #TabsToolbar {
+  padding-top: 47px;
+  }
+  
+  /* Content Area Styling - Add Shadow */
+  .browserContainer {
+    box-shadow: 0 0px 5px 2px rgb(0 0 0 / 0.1);
+  }
+  
+  /* Navbar - set as container, hide actual element but bring higher, set height to match margins on right and bottom of content area  */
+  #zen-appcontent-navbar-container {
+    container-type: inline-size;
+    height: var(--zen-element-separation);
+    z-index: 1;
+  }
+  
+  /* Make Nav Bar the same width as the sidebar, allow elements to be visible outside the parent */
+  #nav-bar {
+    --sidebar-width: calc(100vw - 100cqw);
+    width: var(--sidebar-width);
+    container-name: sidebar;
+    container-type: inline-size;
+    overflow: visible !important;
+  }
+  
+  /* User Setting - Maintain Default Sidebar Width */
+  @media media(-moz-bool-pref: "ark-left.maintain-default-sidebar-width") {
+  
+    /* Sidebar - Maintain 215px Width */
+    #navigator-toolbox {
+      min-width: 215px !important;
+      max-width: 215px !important;
+    }
+    
+    /* Sidebar - Don't Change Cursor When Hovering over Splitter */
+    #zen-sidebar-splitter {
+      pointer-events: none;
+    }
+  
+  }
+  
+  /* Hide Navbar Buttons - Preferences, Sidebar, and Profile */
+  #preferences-button, #zen-expand-sidebar-button, #zen-profile-button  {
+    display: none;
+  }
+  
+  /* Hide Three Dots - Make Transparent, Don't Hide To Enable Panels */
+  #PanelUI-button {
+    opacity: 0%;
+    pointer-events: none;
+  }
+  
+  /* Buttons - Shift buttons to the left of the content area  */
+  #back-button, #forward-button, #stop-reload-button, #unified-extensions-button {
+    position: fixed;
+    top: var(--zen-element-separation);
+    transform: translateX(-500%);
+    z-index: 1;
+  }
+  
+  /* Position Button - Extensions */
+  #unified-extensions-button {
+    left: 30px;
+  }
+  
+  /* Position Button - Back */
+  #back-button {
+    left: 55px;
+  }
+  
+  /* Position Button - Forward */
+  #forward-button {
+    left: 105px;
+  }
+  
+  /* Position Button - Reload */
+  #stop-reload-button {
+    left: 140px;
+  }
+  
+  /* Hide Bookmarks Bar */
+  #PersonalToolbar {
+    display: none;
+  }
+  
+  /* Hide on Resize - Under 225px */
+  @container sidebar (max-width: 225px) {
+    
+    /* Hide Button - Extensions */
+    #unified-extensions-button {
+      opacity: 0;
+    }
+  }
+
+  /* Hide on Resize - Under 185px */
+  @container sidebar (max-width: 185px) {
+    
+    /* Hide Button - Reload */
+    #stop-reload-button {
+      visibility: hidden;
+    }
+    
+    /* Positoon Button - Back */
+    #back-button {
+      left: 90px;
+    }
+    
+    /* Hide Button - Forward */
+    #forward-button {
+      left: 140px;
+    }
+  }
+  
+
+  /* Move URL Bar and constrain size to the sidebar width */
+  #urlbar-container {
+    position: fixed !important;
+    top: 45px;
+    margin-left: var(--zen-element-separation);
+    width: calc(100% - 15px) !important;
+    transform: translateX(calc(-100% - 15px));
+  }
+  
+  /* URL Bar - Remove Shadow */
+  #urlbar {
+    box-shadow: none;
+    height: 35px;
+  }
+  
+  /* URL Bar Inactive - Background Color */
+  #urlbar:not([focused="true"]):not([breakout-extend="true"]) > #urlbar-background {
+    background: color-mix(in srgb, var(--tab-hover-background-color) 80%, transparent) !important;
+  }
+  
+  /* URL Bar Inactive - Text Weight, Padding, and Color */
+  #urlbar-input {
+    font-weight: 400;
+    font-size: 0.95em;
+    padding-left: 10px;
+    color: color-mix(in srgb, currentColor 65%, transparent);
+  }
+  
+  /* URL Bar - Hide "box" elemenets */
+  #urlbar [id$="-box"] {
+    display: none;
+  }
+  
+  /* User Setting - Hide HTTP Warning Icon */
+  @media (-moz-bool-pref: "ark-left.hide-http-warning-icon") {
+
+  
+    /* URL Bar - Show SSL (non-https) Warning */
+    #urlbar [id$="-box"]:has(#identity-icon[tooltiptext="Connection is not secure"]) {
+      display: inherit;
+      margin-right: 0px !important;
+    }
+  
+  }
+  
+  /* Hide SSL Text Warning */
+  label[value="Not Secure"] {
+    display: none;
+  }
+  
+  /* Color SSL Warning Red */
+  #identity-icon[tooltiptext="Connection is not secure"] {
+    color: #D46955;
+  }
+  
+  /* URL Bar - Show Reader Button */
+  #urlbar [id$="-button"]:not(#reader-mode-button) {
+    display: none;
+  }
+  
+  /* URL Bar - Hide "container" elements */
+  #urlbar [id$="-container"] {
+    display: none;
+  }
+  
+  /* Extensions Notification (e.g. "Has Been Added") */  
+  #nav-bar #PanelUI-button {
+    position: absolute;
+    top: var(--zen-element-separation);
+    left: 248px !important;
+  }
+  
+  /* Extensions Picker - Animation */
+  #unified-extensions-panel {
+    animation: ease-in-out;
+    transition-duration: 0.13s;
+  }
+  
+  /* Extension Windows - Animation */
+  #customizationui-widget-panel {
+    border-radius: var(--zen-border-radius);
+    animation: ease-in-out;
+    transition-duration: 0.13s;
+  }
+
+  
+  
+
+  
+  
+  /* Dialog Container (e.g. "Are You Sure You want To Remove?") - Make Full Height*/  
+  #window-modal-dialog {
+    height: 100vh;
+    max-height: 100%;
+  }
+  
+  /* Dialog Template - Place in Center */  
+  #window-modal-dialog .dialogTemplate {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  /* Dialog Frame - Shadow */  
+  #window-modal-dialog .dialogBox {
+  &:not(.spotlightBox) {
+    box-shadow: 0 0px 35px 35px rgb(0 0 0 / 0.2);
+  }
+  }
+  
+  
+  /* URL Bar Open */
+  #urlbar-container:has(> #urlbar[open]) {
+
+    /* URL Bar (Open) Styling - Dimensions, Shadow */
+    #urlbar {
+      left: 0;
+      top: 0;
+      width: 760px;
+      overflow: hidden !important;
+      box-shadow: 0 0px 50px 50px rgb(0 0 0 / 0.2);
+    }
+    
+    /* URL Bar (Open) Styling - Font */
+    #urlbar-input {
+      font-size: 1.2em;
+      color: unset;
+    }
+    
+    /* URL Bar (Open) Styling - Input Area Height */
+    .urlbar-input-container {
+      height: 50px;
+    }
+    
+    /* URL Bar (Open) Styling - Auto-Suggest Rows Height */
+    .urlbarView-row {
+      height: 50px;
+    }
+    
+    /* URL Bar (Open) Styling - Hide 'Go' Arrow */
+    .urlbar-go-button {
+      display: none;
+    }
+    
+    /* URL Bar (Open) Styling - Results Rows */
+    .urlbarView-row-inner {
+      flex-wrap: unset;
+      font-weight: 500 !important;
+      font-size: 0.98em;
+    }
+    
+    /* URL Bar (Open) Styling - Results Rows - Bold Character Matches */
+    .urlbarView-row-inner strong {
+      font-weight: unset !important;
+    }
+    
+    /* URL Bar (Open) Styling - Rows Wrap */
+    .urlbarView-no-wrap {
+      flex-basis: unset;
+      font-size: inherit;
+    }
+    
+    /* URL Bar (Open) Styling - Title and URL Seperator */
+    .urlbarView-title-separator {
+      color: color-mix(in srgb, currentColor 30%, transparent);
+    }
+    
+    /* URL Bar (Open) Styling - URL Text */
+    .urlbarView-url {
+      --urlbarView-second-line-indent: 15px;
+      font-size: inherit;
+      color: color-mix(in srgb, currentColor 30%, transparent);
+    }
+ 
+    
+  }
+  
+}

@@ -1,0 +1,12 @@
+[
+    {
+        "property": "ark-left.maintain-default-sidebar-width",
+        "label": "Maintain Default Sidebar Width",
+        "type": "checkbox"
+    },
+    {
+        "property": "ark-left.hide-http-warning-icon",
+        "label": "Hide HTTP Warning Icon",
+        "type": "checkbox"
+    }
+]
