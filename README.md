@@ -4,6 +4,10 @@ All aboard the Ark! I hope this helps with migration.
 
 This [Zen Browser](https://zen-browser.app/) theme aims to capture Arc Browser's essence with pure css. Primarily, this is achieved by removing the top toolbar, relocating the most used buttons to the top of the sidebar along with the URL bar, which also receives suitable styling.
 
+To ensure a smooth experience, I would recommend resetting the toolbar - right-click on the toolbar, select Customize Toolbar, and finally Reset Defaults.
+
+The theme is only applied when the user has the tabs set to be on the left and isn't currently in compact mode, you should be fine to use those other modes/settings without having to diable this mod.
+
 There are two opt-in customisations included within user preferences:
 - Maintain Default Sidebar Width (keep at 215px)
 - Hide HTTP Warning Icon (for sites without SSL)
